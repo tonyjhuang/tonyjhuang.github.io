@@ -74,7 +74,10 @@ function renderMobileSocial(social) {
 function initSocialListeners(socials) {
     for (const [clazz, , , link] of socials) {
         function toggleHoverClass(e) {
-            $(e.target).closest('.social-container').toggleClass(`${clazz}-hover`);
+            $(e.target).closest('.social-container').toggleClass([
+                `${clazz}-hover`,
+                'grow-hover',
+            ]);
         }
         $(`.${clazz} .social-label`).hover(toggleHoverClass, toggleHoverClass);
         $(`.${clazz} .social-label`).click(function() {
