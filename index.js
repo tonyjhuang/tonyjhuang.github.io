@@ -24,10 +24,10 @@ const LOAD_IN_STEP_DELAY_MS = 125;
 
 // [class name, domain, handle, link]
 const SOCIALS = [
-    ['instagram', 'instagram.com', 'tonyjhuang', 'http://instagram.com/tonyjhuang'],
     ['facebook', 'facebook.com', 'tonyjunhuang', 'http://facebook.com/tonyjunhuang'],
-    ['linkedin', 'linkedin.com', 'in/tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
+    ['instagram', 'instagram.com', 'tonyjhuang', 'http://instagram.com/tonyjhuang'],
     ['github', 'github.com', 'tonyjhuang', 'http://github.com/tonyjhuang'],
+    ['linkedin', 'linkedin.com', 'in/tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
 ]
 
 $(init);
