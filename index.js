@@ -1,7 +1,7 @@
 const DESKTOP_SOCIAL_TMPL = `
 <div class="social-container {{CLASS}}">
     <span class="social-outer social-start">
-        <img class="social-img" src={{IMAGE}}></img><span class="social-label social-domain">{{DOMAIN}}</span>
+        <span class="social-label social-domain">{{DOMAIN}}</span>
     </span>
     <span class="social-label slash-divider">/</span>
     <span class="social-outer">
@@ -37,10 +37,6 @@ function init() {
     renderDesktop(SOCIALS, $('.desktop-container'));
     renderMobile(SOCIALS, $('.mobile-container'));
     initSocialListeners(SOCIALS);
-
-    if (!USE_IMAGE_ICONS) {
-        $('.social-img').remove();
-    }
 }
 
 function renderDesktop(socials, container) {
@@ -55,8 +51,7 @@ function renderDesktopSocial(social) {
     return DESKTOP_SOCIAL_TMPL.slice()
         .replace('{{CLASS}}', clazz)
         .replace('{{DOMAIN}}', domain)
-        .replace('{{HANDLE}}', handle)
-        .replace('{{IMAGE}}', `assets/${clazz}.png`);
+        .replace('{{HANDLE}}', handle);
 }
 
 function renderMobile(socials, container) {
