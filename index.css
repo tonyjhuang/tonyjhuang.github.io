@@ -1,0 +1,53 @@
+html,
+body {
+    height: 100%;
+    font-family: 'Inconsolata', monospace;
+    font-size: smaller;
+}
+
+.main-container {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero {
+    margin-bottom: 8px;
+}
+
+.social-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 4px;
+    color: #424242;
+}
+
+.social-container {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-top: 4px;
+}
+
+.social-container span {
+    color: #424242;
+    transition: color 0.25s;
+    transition-timing-function: ease-out;
+}
+
+.social-outer {
+    width: 50%;
+}
+
+.social-start {
+    direction: rtl;
+    text-align: justify;
+}
+
+.instagram:hover .social-label {
+    color: #e95950;
+}
