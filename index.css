@@ -2,11 +2,11 @@ html,
 body {
     height: 100%;
     font-family: 'Inconsolata', monospace;
-    font-size: smaller;
+    font-size: medium;
 }
 
 .main-container {
-    height: 80%;
+    height: 85%;
     width: 100%;
     display: flex;
     align-items: center;
