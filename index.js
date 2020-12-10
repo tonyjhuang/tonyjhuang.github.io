@@ -16,11 +16,6 @@ const MOBILE_SOCIAL_TMPL = `
 </div>
 `
 
-// TODO: decide if we want to remove this.
-const USE_IMAGE_ICONS = false;
-
-const INITIAL_LOAD_IN_DELAY_MS = 500;
-const LOAD_IN_STEP_DELAY_MS = 125;
 
 // [class name, domain, handle, link]
 const SOCIALS = [
@@ -30,12 +25,17 @@ const SOCIALS = [
     ['linkedin', 'linkedin.com', 'in/tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
 ]
 
+const INITIAL_LOAD_IN_DELAY_MS = 500;
+const LOAD_IN_STEP_DELAY_MS = 125;
+const TOTAL_SOCIAL_LOAD_IN_DELAY_MS = INITIAL_LOAD_IN_DELAY_MS + SOCIALS.length * LOAD_IN_STEP_DELAY_MS;
+
 $(init);
 
 function init() {
     applyOpacityLoadIn($('.hero'), 0);
     renderDesktop(SOCIALS, $('.desktop-container'));
     renderMobile(SOCIALS, $('.mobile-container'));
+    applyOpacityLoadIn($('.email'), TOTAL_SOCIAL_LOAD_IN_DELAY_MS + LOAD_IN_STEP_DELAY_MS);
     initSocialListeners(SOCIALS);
 }
 
