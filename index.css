@@ -2,7 +2,7 @@ html,
 body {
     height: 100%;
     font-family: 'Inconsolata', monospace;
-    font-size: medium;
+    font-size: large;
 }
 
 .main-container {
@@ -15,28 +15,24 @@ body {
 }
 
 .hero {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .social-container {
     display: flex;
     width: 100%;
     flex-direction: row;
-    margin-top: 4px;
-    color: #424242;
+    margin-top: 6px;
+    color: #5c5c5c;
 }
 
-.social-container {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    margin-top: 4px;
-}
-
-.social-container span {
-    color: #424242;
+.social-label {
     transition: color 0.25s;
     transition-timing-function: ease-out;
+}
+
+span.social-label {
+    cursor: pointer;
 }
 
 .social-outer {
@@ -48,6 +44,29 @@ body {
     text-align: justify;
 }
 
+.slash-divider {
+    padding-left: 1px;
+}
+
+
+/*
 .instagram:hover .social-label {
     color: #e95950;
+}
+*/
+
+.instagram-hover {
+    color: #bc2a8d !important;
+}
+
+.facebook-hover {
+    color: #4267b2 !important;
+}
+
+.linkedin-hover {
+    color: #0e76a8 !important;
+}
+
+.github-hover {
+    color: #333 !important;
 }
