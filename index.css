@@ -1,12 +1,11 @@
 html,
 body {
-    height: 100%;
     font-family: 'Inconsolata', monospace;
     font-size: large;
 }
 
 .main-container {
-    height: 85%;
+    height: 50%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -33,6 +32,8 @@ body {
 
 span.social-label {
     cursor: pointer;
+    line-height: 22px;
+    vertical-align: top
 }
 
 .social-outer {
@@ -41,19 +42,11 @@ span.social-label {
 
 .social-start {
     direction: rtl;
-    text-align: justify;
 }
 
 .slash-divider {
     padding-left: 1px;
 }
-
-
-/*
-.instagram:hover .social-label {
-    color: #e95950;
-}
-*/
 
 .instagram-hover {
     color: #bc2a8d !important;
@@ -69,4 +62,37 @@ span.social-label {
 
 .github-hover {
     color: #333 !important;
+}
+
+.social-img {
+    height: 22px;
+    width: 22px;
+}
+
+.desktop-container {
+    display: none;
+    width: 100%;
+}
+
+.mobile-container {
+    display: block;
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    html,
+    body {
+        height: 100%;
+    }
+    .main-container {
+        height: 80%;
+    }
+    .desktop-container {
+        display: block;
+    }
+    .mobile-container {
+        display: none;
+    }
 }

@@ -1,7 +1,7 @@
-const SOCIAL_TMPL = `
+const DESKTOP_SOCIAL_TMPL = `
 <div class="social-container {{CLASS}}">
     <span class="social-outer social-start">
-        <span class="social-label">{{DOMAIN}}</span>
+        <img class="social-img" src={{IMAGE}}></img><span class="social-label social-domain">{{DOMAIN}}</span>
     </span>
     <span class="social-label slash-divider">/</span>
     <span class="social-outer">
@@ -10,8 +10,17 @@ const SOCIAL_TMPL = `
 </div>
 `
 
-// [class name, domain, handle]
-const SOCIAL = [
+const MOBILE_SOCIAL_TMPL = `
+<div class="social-container {{CLASS}}">
+    <span class="social-label">{{DOMAIN}}/{{HANDLE}}</span>
+</div>
+`
+
+// TODO: decide if we want to remove this.
+const USE_IMAGE_ICONS = false;
+
+// [class name, domain, handle, link]
+const SOCIALS = [
     ['instagram', 'instagram.com', 'tonyjhuang', 'http://instagram.com/tonyjhuang'],
     ['facebook', 'facebook.com', 'tonyjunhuang', 'http://facebook.com/tonyjunhuang'],
     ['linkedin', 'linkedin.com', 'tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
@@ -23,28 +32,53 @@ $(function() {
 });
 
 function init() {
-    for (const social of SOCIAL) {
-        $('.main-container').append(renderSocial(social));
-        initSocial(social);
+    renderDesktop(SOCIALS, $('.desktop-container'));
+    renderMobile(SOCIALS, $('.mobile-container'));
+    initSocialListeners(SOCIALS);
+
+    if (!USE_IMAGE_ICONS) {
+        $('.social-img').remove();
     }
 }
 
-function renderSocial(social) {
+function renderDesktop(socials, container) {
+    for (const social of socials) {
+        container.append(renderDesktopSocial(social));
+    }
+}
+
+function renderDesktopSocial(social) {
     let [clazz, domain, handle] = social;
-    return SOCIAL_TMPL.slice()
+    return DESKTOP_SOCIAL_TMPL.slice()
+        .replace('{{CLASS}}', clazz)
+        .replace('{{DOMAIN}}', domain)
+        .replace('{{HANDLE}}', handle)
+        .replace('{{IMAGE}}', `assets/${clazz}.png`);
+}
+
+function renderMobile(socials, container) {
+    for (const social of socials) {
+        container.append(renderMobileSocial(social));
+    }
+}
+
+function renderMobileSocial(social) {
+    let [clazz, domain, handle] = social;
+    return MOBILE_SOCIAL_TMPL.slice()
         .replace('{{CLASS}}', clazz)
         .replace('{{DOMAIN}}', domain)
         .replace('{{HANDLE}}', handle);
+
 }
 
-function initSocial(social) {
-    let [clazz, , , link] = social;
-
-    function toggleHoverClass(e) {
-        $(e.target).closest('.social-container').toggleClass(`${clazz}-hover`);
+function initSocialListeners(socials) {
+    for (const [clazz, , , link] of socials) {
+        function toggleHoverClass(e) {
+            $(e.target).closest('.social-container').toggleClass(`${clazz}-hover`);
+        }
+        $(`.${clazz} .social-label`).hover(toggleHoverClass, toggleHoverClass);
+        $(`.${clazz} .social-label`).click(function() {
+            window.open(link);
+        });
     }
-    $(`.${clazz} .social-label`).hover(toggleHoverClass, toggleHoverClass);
-    $(`.${clazz} .social-label`).click(function() {
-        window.open(link);
-    });
 }
