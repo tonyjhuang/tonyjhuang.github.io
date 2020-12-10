@@ -19,19 +19,21 @@ const MOBILE_SOCIAL_TMPL = `
 // TODO: decide if we want to remove this.
 const USE_IMAGE_ICONS = false;
 
+const INITIAL_LOAD_IN_DELAY_MS = 500;
+const LOAD_IN_STEP_DELAY_MS = 125;
+
 // [class name, domain, handle, link]
 const SOCIALS = [
     ['instagram', 'instagram.com', 'tonyjhuang', 'http://instagram.com/tonyjhuang'],
     ['facebook', 'facebook.com', 'tonyjunhuang', 'http://facebook.com/tonyjunhuang'],
-    ['linkedin', 'linkedin.com', 'tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
+    ['linkedin', 'linkedin.com', 'in/tonyjhuang', 'http://linkedin.com/in/tonyjhuang'],
     ['github', 'github.com', 'tonyjhuang', 'http://github.com/tonyjhuang'],
 ]
 
-$(function() {
-    init();
-});
+$(init);
 
 function init() {
+    applyOpacityLoadIn($('.hero'), 0);
     renderDesktop(SOCIALS, $('.desktop-container'));
     renderMobile(SOCIALS, $('.mobile-container'));
     initSocialListeners(SOCIALS);
@@ -45,6 +47,7 @@ function renderDesktop(socials, container) {
     for (const social of socials) {
         container.append(renderDesktopSocial(social));
     }
+    applyOpacityLoadIn($(container).find('.social-container'));
 }
 
 function renderDesktopSocial(social) {
@@ -60,6 +63,7 @@ function renderMobile(socials, container) {
     for (const social of socials) {
         container.append(renderMobileSocial(social));
     }
+    applyOpacityLoadIn($(container).find('.social-container'));
 }
 
 function renderMobileSocial(social) {
@@ -83,5 +87,13 @@ function initSocialListeners(socials) {
         $(`.${clazz} .social-label`).click(function() {
             window.open(link);
         });
+    }
+}
+
+function applyOpacityLoadIn(elements, initialDelay) {
+    let delay = initialDelay === undefined ? INITIAL_LOAD_IN_DELAY_MS : initialDelay;
+    for (const e of elements) {
+        setTimeout(() => $(e).addClass('opacity-load-in'), delay);
+        delay += LOAD_IN_STEP_DELAY_MS;
     }
 }

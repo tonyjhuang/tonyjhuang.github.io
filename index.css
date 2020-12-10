@@ -16,6 +16,9 @@
     .hero {
         margin-top: 2rem;
         margin-bottom: 2rem;
+        transition: opacity 0.5s;
+        transition-timing-function: ease-out;
+        opacity: 0;
     }
     
     .social-container {
@@ -24,8 +27,13 @@
         flex-direction: row;
         color: #5c5c5c;
         margin-bottom: 2rem;
-        transition: color 0.25s, transform 0.25s;
+        transition: color 0.25s, transform 0.25s, opacity 1s;
         transition-timing-function: ease-out;
+        opacity: 0;
+    }
+    
+    .opacity-load-in {
+        opacity: 1 !important;
     }
     
     span.social-label {
@@ -80,6 +88,7 @@
     @media only screen and (min-width: 1024px) {
         html,
         body {
+            margin: 0;
             height: 100%;
             font-size: 1em;
         }
