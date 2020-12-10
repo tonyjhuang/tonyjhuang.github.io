@@ -1,7 +1,7 @@
 html,
 body {
     font-family: 'Inconsolata', monospace;
-    font-size: large;
+    font-size: larger;
 }
 
 .main-container {
@@ -81,10 +81,11 @@ span.social-label {
 
 /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
     html,
     body {
         height: 100%;
+        font-size: large;
     }
     .main-container {
         height: 80%;
